@@ -56,7 +56,7 @@ export default async function ConferenceDetailPage(props: Props) {
   } catch {
     return (
       <Container sx={{ py: 6 }}>
-        <Typography variant="h4" color="error">
+        <Typography variant="h5" color="error">
           Bunday konferensiya topilmadi
         </Typography>
       </Container>
@@ -65,7 +65,7 @@ export default async function ConferenceDetailPage(props: Props) {
 
   return (
     <Container maxWidth="lg" sx={{ py: 6 }}>
-      <Typography variant="h4" fontWeight="bold" gutterBottom>
+      <Typography variant="h5" fontWeight="bold" gutterBottom>
         {conference.title}
       </Typography>
 

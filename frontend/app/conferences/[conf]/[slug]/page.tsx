@@ -1,17 +1,18 @@
 import api from "@/lib/api";
+import { BASE_URL } from "@/lib/constants";
 import type { Article } from "@/types/models";
 
 import { Container, Typography, Button, Divider } from "@mui/material";
 
 interface Props {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ slug: string; conf: string }>;
 }
 
 //
 // 🔵 Dynamic SEO (Google Scholar + OG + Twitter)
 //
 export async function generateMetadata({ params }: Props) {
-  const { slug } = await params;
+  const { slug, conf } = await params;
 
   try {
     const article: Article = await api.get(`conferences/article/${slug}/`);
@@ -23,7 +24,7 @@ export async function generateMetadata({ params }: Props) {
         title: article.title,
         description: article.abstract,
         type: "article",
-        url: `/article/${slug}`,
+        url: `${BASE_URL}/conferences/${conf}/${slug}`,
       },
       twitter: {
         card: "summary_large_image",
@@ -58,7 +59,7 @@ export async function generateMetadata({ params }: Props) {
 // 🔵 PAGE COMPONENT (SSR)
 //
 export default async function ArticleDetailPage({ params }: Props) {
-  const { slug } = await params;
+  const { slug, conf } = await params;
 
   let article: Article;
   try {
@@ -89,7 +90,7 @@ export default async function ArticleDetailPage({ params }: Props) {
             })),
             datePublished: article.published_date,
             description: article.abstract,
-            url: `https://your-domain.com/article/${article.slug}`,
+            url: `${BASE_URL}/conferences/${conf}/${article.slug}`,
             keywords: article.keywords,
             ...(article.doi && { identifier: article.doi }),
             isPartOf: {

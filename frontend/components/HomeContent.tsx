@@ -35,7 +35,7 @@ export default function HomeContent({
       >
         <Container maxWidth="md">
           <Typography
-            variant="h2"
+            variant={"h4"}
             textTransform={"uppercase"}
             fontWeight="bold"
             gutterBottom

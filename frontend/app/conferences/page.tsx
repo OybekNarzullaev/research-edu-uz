@@ -18,7 +18,7 @@ export default async function ConferencesPage() {
   return (
     <Container maxWidth="lg" sx={{ py: 6 }}>
       {/* Page Title */}
-      <Typography variant="h4" fontWeight="bold" gutterBottom>
+      <Typography variant="h5" fontWeight="bold" gutterBottom>
         Konferensiyalar ro‘yxati
       </Typography>
 
