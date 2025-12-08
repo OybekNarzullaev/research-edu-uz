@@ -58,6 +58,15 @@ CORS_ALLOWED_ORIGINS = [
     "https://conf.research-edu.uz",
 ]
 
+CSRF_TRUSTED_ORIGINS = [
+    "http://localhost:3000",
+    "http://localhost:5173",
+    "https://test.research-edu.uz",
+    "http://conf.research-edu.uz",
+    "https://conf.research-edu.uz",
+]
+
+
 REST_FRAMEWORK = {
     "DEFAULT_FILTER_BACKENDS": ["django_filters.rest_framework.DjangoFilterBackend"],
     "DEFAULT_AUTHENTICATION_CLASSES": [
