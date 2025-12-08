@@ -32,16 +32,21 @@ export default function Navbar() {
       <AppBar
         position="sticky"
         elevation={2}
+        variant="outlined"
         sx={{
-          bgcolor: "white",
+          zIndex: 10,
           color: "black",
+          backgroundColor: "rgba(255, 255, 255, 0.6)", // yarim shaffof fon
+          backdropFilter: "blur(12px)", // blur effect
+          WebkitBackdropFilter: "blur(12px)", // Safari uchun
+          borderBottom: "1px solid rgba(0,0,0,0.1)", // yumshoq chiziq
         }}
       >
         <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
           {/* LEFT: LOGO */}
           <Link href="/" style={{ textDecoration: "none", color: "inherit" }}>
             <Typography variant="h6" fontWeight="bold">
-              Ilmiy Konferensiyalar
+              Ilmiy konferensiyalar
             </Typography>
           </Link>
 

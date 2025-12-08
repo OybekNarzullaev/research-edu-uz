@@ -98,7 +98,7 @@ export default function AboutPage() {
           </Typography>
 
           <Typography variant="body1" sx={{ mt: 1 }}>
-            ✉️ Email: <strong>info@ilmiy-konferensiya.uz</strong>
+            ✉️ Email: <strong>n.oybek.dev@gmail.com</strong>
           </Typography>
 
           <Typography variant="body1" sx={{ mt: 1 }}>

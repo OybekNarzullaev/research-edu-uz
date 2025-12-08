@@ -4,9 +4,6 @@ import ConferenceCard from "@/components/ConferenceCard";
 
 import { Container, Grid, Typography } from "@mui/material";
 
-interface Props {
-  conferences: Conference[];
-}
 export const metadata = {
   title: "Konferensiyalar – Ilmiy Arxiv",
   description: "Barcha ilmiy konferensiyalar ro‘yxati.",
