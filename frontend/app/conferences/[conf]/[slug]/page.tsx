@@ -37,7 +37,7 @@ export async function generateMetadata({ params }: Props) {
         citation_title: article.title,
         citation_author: article.authors,
         citation_publication_date: article.published_date,
-        citation_pdf_url: article.pdf,
+        citation_pdf_url: BASE_API_URL + article.pdf,
         ...(article.keywords && { citation_keywords: article.keywords }),
         ...(article.pages && {
           citation_firstpage: article.pages.split("–")[0],

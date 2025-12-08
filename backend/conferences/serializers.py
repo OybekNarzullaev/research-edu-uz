@@ -10,6 +10,12 @@ class ConferenceShortSerializer(serializers.ModelSerializer):
 
 class ArticleSerializer(serializers.ModelSerializer):
     conference = ConferenceShortSerializer()
+    pdf = serializers.SerializerMethodField()
+
+    def get_pdf(self, obj):
+        if obj.pdf:
+            return f"/files/{obj.pdf.name}"
+        return None
 
     class Meta:
         model = Article
