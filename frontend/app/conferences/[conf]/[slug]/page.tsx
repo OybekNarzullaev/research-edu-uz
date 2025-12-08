@@ -1,5 +1,5 @@
 import api from "@/lib/api";
-import { BASE_URL } from "@/lib/constants";
+import { BASE_API_URL, BASE_URL } from "@/lib/constants";
 import type { Article } from "@/types/models";
 
 import { Container, Typography, Button, Divider } from "@mui/material";
@@ -145,7 +145,7 @@ export default async function ArticleDetailPage({ params }: Props) {
       <Button
         variant="contained"
         size="large"
-        href={article.pdf}
+        href={BASE_API_URL + article.pdf}
         target="_blank"
       >
         PDF-ni ko‘rish / Yuklab olish
