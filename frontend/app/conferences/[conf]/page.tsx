@@ -1,8 +1,10 @@
+import { BASE_URL } from "@/lib/constants";
 import api from "@/lib/api";
 import type { Conference, ArticleShort } from "@/types/models";
 import ArticleCard from "@/components/ArticleCard";
 
 import { Container, Typography, Grid, Box } from "@mui/material";
+import { Metadata } from "next";
 
 interface Props {
   params: Promise<{
@@ -10,46 +12,38 @@ interface Props {
   }>;
 }
 
-export async function generateMetadata({ params }: Props) {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { conf: slug } = await params;
 
-  try {
-    const conference: Conference = await api.get(`conferences/${slug}/`);
+  const conference: Conference = await api.get(`conferences/${slug}/`);
 
-    const title = `${conference.title} – Ilmiy Konferensiya`;
-    const description =
-      conference.description ||
-      `${conference.title} konferensiyasiga oid ilmiy maqolalar va materiallar.`;
+  const title = `${conference.title} – Ilmiy Konferensiya`;
+  const description =
+    conference.description ||
+    `${conference.title} konferensiyasiga oid ilmiy maqolalar va materiallar.`;
 
-    return {
+  return {
+    title,
+    description,
+    openGraph: {
       title,
       description,
-      openGraph: {
-        title,
-        description,
-        type: "website",
-        url: `/conferences/${slug}`,
-      },
-      twitter: {
-        card: "summary_large_image",
-        title,
-        description,
-      },
-      alternates: {
-        canonical: `/conferences/${slug}`,
-      },
-      other: {
-        // Scholar-friendly meta
-        citation_conference_title: conference.title,
-        citation_publication_date: conference.start_date,
-      },
-    };
-  } catch {
-    return {
-      title: "Konferensiya topilmadi",
-      description: "Ushbu konferensiya mavjud emas.",
-    };
-  }
+      type: "website",
+      url: `${BASE_URL}/conferences/${slug}`, // ✔ TO‘G‘RI
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+    },
+    alternates: {
+      canonical: `${BASE_URL}/conferences/${slug}`, // ✔ TO‘G‘RI
+    },
+    other: {
+      citation_conference_title: conference.title,
+      citation_publication_date: conference.start_date,
+    },
+  };
 }
 
 export default async function ConferenceDetailPage(props: Props) {
