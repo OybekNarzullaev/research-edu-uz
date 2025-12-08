@@ -16,7 +16,7 @@ SECRET_KEY = 'django-insecure-9)sr96(_&p-v63_=i3ffeb7^mt1wo_-9=&c)7@ksw36hn#t01y
 DEBUG = os.getenv("DEBUG") == 'True'
 
 ALLOWED_HOSTS = ['localhost', 'test.research-edu.uz',
-                 'conf.research-edu.uz']
+                 'conf.research-edu.uz', "192.168.90.22"]
 
 
 # Application definition
